@@ -1,6 +1,6 @@
 ---
-import joshDark from "~/assets/josh-dark.webp";
-import joshLight from "~/assets/josh-light.webp";
+import peaceImage from "~/assets/peace.teka.png";
+import amaniImage from "~/assets/amani.png";
 import BodyContents from "~/components/BodyContents.astro";
 import Socials from "~/components/Socials.astro";
 import { Text } from "~/components/Text";
@@ -9,26 +9,25 @@ import HeroLayout from "../layouts/HeroLayout.astro";
 ---
 
 <HeroLayout
-	alt="Josh's half-smiling happy face"
-	description="I'm an open source maintainer in the TypeScript ecosystem."
-	images={{ dark: joshDark, light: joshLight }}
-	primary="Hi! I'm Josh."
-	slug="josh"
+	alt="Brian's professional profile picture"
+	description="I am a Software Engineer"
+	images={{ dark: amaniImage, light: peaceImage }}
+	primary="Hi I'm Brian Peace Teka 👋🏿👋🏿"
+	slug="brian"
 >
 	<Fragment slot="secondary">
-		I'm an open source maintainer in the TypeScript ecosystem.
+		I tinker with React (Next.js), Node.js, TypeScript. I am also diving into React Native and I am loving it, and a bit of Rust.
 	</Fragment>
 	<Socials slot="tertiary" />
 	<BodyContents class="about">
 		<Text as="p" fontSize="medium" fontWeight="light">
-			I work to make web development better, most notably on typescript-eslint:
-			<br class="tabletUp" />
-			a powerful static analysis toolset for JavaScript and TypeScript code.
+			I am currently getting my hands dirty with a lot of framework stuff. Checkout : Urban.Js (A minimalist react meta framework) ↗
 		</Text>
 		<Text as="p" fontSize="medium" fontWeight="light">
-			I’m the author of Learning TypeScript (O’Reilly), a Microsoft MVP,
-			<br class="tabletUp" />
-			an international conference speaker, and a community organizer.
+			Technical Writer at Section and contributes to making databases easy to use at Prisma 💚💚
+		</Text>
+		<Text as="p" fontSize="medium" fontWeight="light">
+			Now that we are friends 👀, you have my permission to roam around 👻
 		</Text>
 	</BodyContents>
 </HeroLayout>

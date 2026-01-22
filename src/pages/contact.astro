@@ -1,0 +1,40 @@
+---
+import { Text } from "~/components/Text";
+import peaceImage from "~/assets/peace.teka.png";
+import amaniImage from "~/assets/amani.png";
+import HeroLayout from "../layouts/HeroLayout.astro";
+---
+
+<HeroLayout
+  title="Let's Connect"
+  description="Available for collaboration, consulting, and coffee chats"
+  primary="Let's Connect"
+  alt="Professional photo of Brian Peace Teka"
+  images={{
+    light: peaceImage,
+    dark: amaniImage
+  }}
+>
+  <div slot="secondary">
+    Available for collaboration, consulting, and coffee chats
+  </div>
+  
+  <div class="text-center max-w-2xl mx-auto">
+    <Text as="p" fontSize="medium" fontWeight="light" class="mb-8">
+      If you are in Nairobi, and want to go for a walk, get a beer, or work on something together, I'm always open to meeting new people.
+    </Text>
+    
+    <Text as="p" fontSize="medium" fontWeight="light" class="mb-8">
+      Feel free to reach out through any of the channels below.
+    </Text>
+    <Text as="p" fontSize="medium" fontWeight="light" class="mb-8">
+      <a href="mailto:peaceteka2@gmail.com" class="text-blue-500 hover:underline">peaceteka2@gmail.com</a>
+    </Text>
+    <Text as="p" fontSize="medium" fontWeight="light" class="mb-4">
+      Alternatively, you can call me ... But not at weird hours... My Girlfriend's cat doesn't like that
+    </Text>
+    <Text as="p" fontSize="medium" fontWeight="light">
+      <a href="tel:+254740127973" class="text-blue-500 hover:underline">+254 740 127 973</a>
+    </Text>
+  </div>
+</HeroLayout>

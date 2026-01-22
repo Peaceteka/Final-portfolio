@@ -1,52 +1,35 @@
 ---
-import { getCollection } from "astro:content";
-
-import speakingDark from "~/assets/speaking-dark.webp";
-import speakingLight from "~/assets/speaking-light.webp";
 import { Anchor } from "~/components/Anchor";
-import BodyContents from "~/components/BodyContents.astro";
-import HeroTertiary from "~/components/HeroTertiary.astro";
-import { SpeakingsTabbed } from "~/components/speaking/SpeakingsTabbed";
-import { groupBy } from "~/utils";
-
+import { Text } from "~/components/Text";
+import peaceImage from "~/assets/peace.teka.png";
+import amaniImage from "~/assets/amani.png";
 import HeroLayout from "../layouts/HeroLayout.astro";
-
-const allSpeakings = await getCollection("speaking");
-
-const categories = {
-	All: allSpeakings,
-	...groupBy(allSpeakings, (speaking) => speaking.data.category),
-};
 ---
 
 <HeroLayout
-	alt="Josh looking up seriously wearing a dark blue shirt with a small pineapples and flamingos pattern"
-	description="I talk about static analysis, accessibility, and team culture."
-	images={{ dark: speakingDark, light: speakingLight }}
-	preview="images/speaking-preview.png"
-	primary="Speaking"
-	title="Speaking"
+	alt="Professional photo of Brian Peace Teka"
+	description="Available for collaboration, consulting, and coffee chats"
+	images={{ dark: amaniImage, light: peaceImage }}
+	primary="Let's Connect"
+	title="Let's Connect"
 >
 	<Fragment slot="secondary">
-		I talk about static analysis and co-organize <Anchor
-			href="https://squiggleconf.com"
-			target="_blank"
-			variant="passive"
-		>
-			SquiggleConf
-		</Anchor>.
+		Available for collaboration, consulting, and coffee chats
 	</Fragment>
-	<HeroTertiary slot="tertiary">
-		Want me to speak at your event? Hooray!
-		<br />
-		Please see my <Anchor
-			href="https://github.com/JoshuaKGoldberg/speaker-rider"
-			target="_blank"
-		>
-			speaker rider
-		</Anchor>.
-	</HeroTertiary>
-	<BodyContents>
-		<SpeakingsTabbed categories={categories} client:load />
+	<BodyContents class="text-center">
+		<div class="max-w-2xl mx-auto">
+			<Text as="p" fontSize="medium" fontWeight="light" class="mb-8">
+				If you are in Nairobi, and want to go for a walk/ get a beer/ work on something ...
+			</Text>
+			<Text as="p" fontSize="medium" fontWeight="light" class="mb-8">
+				<a href="mailto:dankatdennis@gmail.com" class="text-blue-500 hover:underline">dankatdennis@gmail.com</a>
+			</Text>
+			<Text as="p" fontSize="medium" fontWeight="light" class="mb-4">
+				Alternatively, you can call me ... But not at weird hours... My Girlfriend's cat doesn't like that
+			</Text>
+			<Text as="p" fontSize="medium" fontWeight="light">
+				<a href="tel:+254711305307" class="text-blue-500 hover:underline">+254 711 305 307</a>
+			</Text>
+		</div>
 	</BodyContents>
 </HeroLayout>

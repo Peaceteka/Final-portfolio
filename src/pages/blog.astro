@@ -1,41 +1,82 @@
 ---
-import { getCollection } from "astro:content";
-
-import goldblogDark from "~/assets/goldblog-dark.webp";
-import goldblogLight from "~/assets/goldblog-light.webp";
-import { Anchor } from "~/components/Anchor";
-import { BlogsGrouped } from "~/components/blog/BlogsGrouped";
-import BodyContents from "~/components/BodyContents.astro";
-import HeroTertiary from "~/components/HeroTertiary.astro";
-
-import { blogDescription } from "../constants";
 import HeroLayout from "../layouts/HeroLayout.astro";
 
-const blogs = await getCollection("blog");
+const blogMessage = "I am still hanging out with friends taking some coffee and beer sometimes chatting about what tech is the best, Not yet started putting them down, I will start soon";
 ---
 
 <HeroLayout
-	alt="Smiling cat receiving head scratches next to a laptop showing VS Code"
-	description={blogDescription}
-	images={{ dark: goldblogDark, light: goldblogLight }}
+	alt="Coffee and tech discussions"
+	description={blogMessage}
 	preview="images/goldblog-preview.png"
-	primary="Goldblog"
-	title="Goldblog"
+	primary="Blog"
+	title="Blog"
 >
-	<Fragment slot="secondary">{blogDescription}</Fragment>
-	<HeroTertiary slot="tertiary">
-		New posts are shared online and posted to an RSS feed at <Anchor
-			href="/rss.xml"
-			target="_blank"
-		>
-			/rss.xml
-		</Anchor>.
-	</HeroTertiary>
+	<div style="
+		display: flex; 
+		justify-content: center; 
+		align-items: center; 
+		min-height: 70vh; 
+		text-align: center; 
+		padding: 2rem; 
+		background: linear-gradient(135deg, var(--colorBackground) 0%, var(--colorBackgroundDark) 100%);
+		border-radius: 1rem;
+		margin: 2rem;
+		box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+		animation: fadeIn 1s ease-in-out;
+	">
+		<div style="
+			max-width: 800px;
+			padding: 3rem;
+			background: var(--colorBackground);
+			border-radius: 1rem;
+			border: 1px solid var(--colorBorder);
+			box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+		">
+			<h2 style="
+				font-size: 2.5rem; 
+				font-weight: 700; 
+				color: var(--colorText);
+				margin-bottom: 2rem;
+				line-height: 1.3;
+				animation: slideUp 0.8s ease-out;
+			">
+				{blogMessage.split(',').map((sentence, i) => (
+					<div key={i} style="margin-bottom: 1rem;">{sentence.trim()}</div>
+				))}
+			</h2>
+			<div style="
+				margin-top: 2rem;
+				font-size: 1.5rem;
+				color: var(--colorTextLight);
+				font-style: italic;
+				animation: fadeIn 1.5s ease-in-out;
+			">
+				Stay tuned for more updates!
+			</div>
+		</div>
+	</div>
 
-	<BodyContents>
-		<BlogsGrouped
-			blogs={blogs.sort((a, b) => +b.data.pubDate - +a.data.pubDate)}
-			client:load
-		/>
-	</BodyContents>
+	<style>
+		@keyframes fadeIn {
+			from { opacity: 0; }
+			to { opacity: 1; }
+		}
+
+		@keyframes slideUp {
+			from { 
+				transform: translateY(20px);
+				opacity: 0;
+			}
+			to { 
+				transform: translateY(0);
+				opacity: 1;
+			}
+		}
+
+		@media (max-width: 768px) {
+			h2 {
+				font-size: 1.8rem !important;
+			}
+		}
+	</style>
 </HeroLayout>
