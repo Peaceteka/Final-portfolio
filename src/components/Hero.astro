@@ -11,58 +11,92 @@ interface Props {
 ---
 
 <div class:list={["hero", Astro.props.class]}>
-	<div class="half first">
-		<HeroImage alt={Astro.props.alt} size="large" src={Astro.props.images} />
-	</div>
-	<div class="half second">
-		<HeroTitle>
-			{Astro.props.primary}
-		</HeroTitle>
-		<slot />
+	<div class="hero-content">
+		<div class="hero-image-container">
+			<HeroImage alt={Astro.props.alt} size="large" src={Astro.props.images} />
+		</div>
+		<div class="hero-text">
+			<HeroTitle>
+				{Astro.props.primary}
+			</HeroTitle>
+			<slot />
+		</div>
 	</div>
 </div>
 
 <style>
 	.hero {
-		margin: clamp(2rem, 8vmin, 8rem) auto;
-		padding: 0 var(--widthPagePadding) 1rem;
-		position: relative;
-		width: var(--widthFull);
-		max-width: 100%;
+		width: 100%;
+		margin: 2rem auto;
+		padding: 0 var(--widthPagePadding);
 	}
 
-	.first {
-		float: right;
+	.hero-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2rem;
+		max-width: var(--widthFull);
+		margin: 0 auto;
 	}
 
-	@media (min-width: 700px) {
+	.hero-image-container {
+		width: 200px;
+		height: 200px;
+		margin: 0 auto 1.5rem;
+	}
+
+	.hero-text {
+		text-align: center;
+		width: 100%;
+	}
+
+	@media (min-width: 640px) {
 		.hero {
-			align-items: center;
-			display: flex;
-			gap: 2.5rem;
-			height: 35vh;
+			margin: 3rem auto;
+		}
+
+		.hero-image-container {
+			width: 250px;
+			height: 250px;
+		}
+	}
+
+	@media (min-width: 768px) {
+		.hero {
+			margin: 4rem auto;
+		}
+
+		.hero-content {
 			flex-direction: row;
-			margin: clamp(8.5rem, 10vh, 10rem) 0 clamp(5rem, 10vh, 14rem);
-			padding: 0;
-		}
-
-		.half {
-			position: relative;
-		}
-
-		.half.first {
-			display: flex;
-			justify-content: flex-end;
-			max-height: initial;
-			width: 45%;
-		}
-
-		.half.second {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
+			align-items: center;
 			justify-content: center;
-			width: 55%;
+			gap: 4rem;
+		}
+
+		.hero-image-container {
+			flex: 0 0 auto;
+			margin: 0;
+		}
+
+		.hero-text {
+			text-align: left;
+			flex: 1;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.hero {
+			margin: 6rem auto;
+		}
+
+		.hero-content {
+			gap: 6rem;
+		}
+
+		.hero-image-container {
+			width: 300px;
+			height: 300px;
 		}
 	}
 </style>
